@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101a2d">
+  <meta name="description" content="A focused, offline-friendly digit memory practice app.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Recall">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+  <title>Recall — Digit Memory</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Recall home">
+        <span class="brand-mark" aria-hidden="true">R</span>
+        <span>recall<span class="brand-dot">.</span></span>
+      </a>
+      <button class="theme-button" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+        <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+      </button>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">A LITTLE PRACTICE, EVERY DAY</p>
+      <h1 id="page-title">Train your<br><span>working memory.</span></h1>
+      <p class="subtitle">Take a moment to remember. Then see what sticks.</p>
+    </section>
+
+    <section class="practice-card" aria-label="Digit memory exercise">
+      <div class="card-topline">
+        <div class="step-label"><span class="step-dot"></span><span id="status-label">READY WHEN YOU ARE</span></div>
+        <label class="length-control" for="length-input">
+          <span>Digits</span>
+          <input id="length-input" type="number" min="3" max="12" value="6" inputmode="numeric" aria-label="Sequence length, from 3 to 12">
+        </label>
+      </div>
+
+      <div class="sequence-panel" id="sequence-panel" aria-live="polite" aria-label="Your digit sequence">
+        <div class="sequence-placeholder" id="sequence-display">— — — — — —</div>
+      </div>
+      <p class="sequence-hint" id="sequence-hint">Your sequence will appear here</p>
+
+      <button class="button button-primary generate-button" id="generate-button" type="button">
+        <span>Generate sequence</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+      </button>
+
+      <div class="recall-area" id="recall-area" hidden>
+        <div class="divider"><span>YOUR TURN</span></div>
+        <label class="input-label" for="answer-input">Type the digits you remember</label>
+        <div class="answer-row">
+          <input id="answer-input" type="text" inputmode="numeric" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="12" placeholder="Enter the sequence" aria-describedby="feedback">
+          <button class="button button-check" id="check-button" type="button">Check</button>
+        </div>
+        <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+        <div class="comparison" id="comparison" hidden></div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Practice statistics">
+      <div class="stat"><span class="stat-value" id="streak-value">0</span><span class="stat-label">CURRENT STREAK</span></div>
+      <span class="stat-divider" aria-hidden="true"></span>
+      <div class="stat"><span class="stat-value" id="best-value">0</span><span class="stat-label">BEST STREAK</span></div>
+      <span class="stat-note">Small steps add up.</span>
+    </section>
+
+    <footer>Made for a sharper you <span aria-hidden="true">✳</span> Works offline</footer>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+</html>
